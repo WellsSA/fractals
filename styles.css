@@ -1,4 +1,8 @@
 #root {
   background: blue;
 }
+
+#root canvas {
+  background: black;
+}
 /*# sourceMappingURL=styles.css.map */
