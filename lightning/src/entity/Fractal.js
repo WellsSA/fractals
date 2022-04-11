@@ -5,7 +5,7 @@ const DEFAULT = {
     initialX: window.innerWidth / 4,
     initialY: 0,
     thickness: 4,
-    length: 120,
+    length: 124,
     angle: 0,
   },
   config: {
@@ -14,7 +14,7 @@ const DEFAULT = {
       min: 50,
     },
     thickness: {
-      decay: 0.4,
+      decay: 0.45,
       min: 0.1,
     },
   },
@@ -67,8 +67,9 @@ class Fractal {
   }
 
   startDrawing() {
-    const { initialX, initialY, thickness, length, angle } = this.initialValues;
+    const { initialX, initialY, thickness, length } = this.initialValues;
 
+    const angle = getRandomNumberInRange(-90, 90);
     this.drawFractal([initialX, initialY], thickness, length, angle);
   }
 }
