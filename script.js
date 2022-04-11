@@ -42,14 +42,14 @@ const config = {
   },
 };
 
-const masterAngle = Math.random() * 65 + 35;
+// const masterAngle = Math.random() * 65 + 35;
 
 function drawFractal(x, y, size, angle) {
   if (size < config.size.min) return;
   const [_x, _y] = line(x, y, size, angle);
   const _size = size - config.size.decay;
-  // const _angle = Math.random() * 90;
-  const _angle = masterAngle;
+  const _angle = Math.random() * 90;
+  // const _angle = masterAngle;
   drawFractal(_x, _y, _size, _angle);
   drawFractal(_x, _y, _size, -_angle);
 }
