@@ -1,6 +1,7 @@
 import { Canvas, Line, Fractal } from './entity/index.js';
 import THEMES from './config/themes.js';
 import { $ } from './util/jquery.js';
+import { getRandomNumberInRange } from './util/random.js';
 
 const canvasElement = $('#root canvas');
 
@@ -15,7 +16,16 @@ const drawLine = ([initialX, initialY], thickness, length, angle = 45) => {
 };
 
 const createLightning = () => {
-  const fractal = new Fractal({ drawingInterface: drawLine });
+  const boundaries = canvas.getWidth() / 4;
+  const fractal = new Fractal({
+    initialValues: {
+      initialX: getRandomNumberInRange(
+        boundaries,
+        canvas.getWidth() - boundaries
+      ),
+    },
+    drawingInterface: drawLine,
+  });
 
   fractal.startDrawing();
 

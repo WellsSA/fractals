@@ -43,6 +43,10 @@ class Canvas {
   clear() {
     this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
   }
+
+  getWidth() {
+    return this.#canvas.width;
+  }
 }
 
 export default Canvas;
