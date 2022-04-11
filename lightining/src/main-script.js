@@ -14,6 +14,17 @@ const drawLine = ([initialX, initialY], thickness, length, angle = 45) => {
   return _line.finalCoordinates;
 };
 
-const fractal = new Fractal({ drawingInterface: drawLine });
+const createLightning = () => {
+  const fractal = new Fractal({ drawingInterface: drawLine });
 
-fractal.startDrawing();
+  fractal.startDrawing();
+
+  setTimeout(() => {
+    canvas.clear();
+    setTimeout(() => {
+      createLightning();
+    }, 50);
+  }, 100);
+};
+
+createLightning();

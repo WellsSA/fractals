@@ -1,19 +1,21 @@
+import { getRandomNumberInRange } from '../util/random.js';
+
 const DEFAULT = {
   initialValues: {
-    initialX: window.innerWidth / 2,
-    initialY: window.innerHeight,
-    thickness: 2,
-    length: 100,
+    initialX: window.innerWidth / 4,
+    initialY: 0,
+    thickness: 4,
+    length: 120,
     angle: 0,
   },
   config: {
     length: {
       decay: 10,
-      min: 1,
+      min: 50,
     },
     thickness: {
-      decay: 0.1,
-      min: 0.2,
+      decay: 0.4,
+      min: 0.1,
     },
   },
 };
@@ -45,15 +47,23 @@ class Fractal {
       angle
     );
 
-    console.log({ nextX, nextY });
     const nextThickness = thickness - this.config.thickness.decay;
     const nextLength = length - this.config.length.decay;
 
-    const nextAngle = Math.random() * 90;
-    setTimeout(() => {
-      this.drawFractal([nextX, nextY], nextThickness, nextLength, nextAngle);
-      this.drawFractal([nextX, nextY], nextThickness, nextLength, -nextAngle);
-    }, 0);
+    const nextAngle = getRandomNumberInRange(1, 60);
+    const branches = getRandomNumberInRange(1, 3);
+
+    Array.from({ length: branches }).forEach(() => {
+      setTimeout((_, i) => {
+        const multiplier = getRandomNumberInRange(1, 10) < 5 ? 1 : -1;
+        this.drawFractal(
+          [nextX, nextY],
+          nextThickness,
+          nextLength,
+          multiplier * nextAngle
+        );
+      }, 0);
+    });
   }
 
   startDrawing() {

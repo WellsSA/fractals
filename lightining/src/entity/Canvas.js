@@ -1,4 +1,5 @@
 class Canvas {
+  #canvas;
   #context;
   constructor(canvasElement) {
     const canvas = canvasElement;
@@ -7,6 +8,7 @@ class Canvas {
 
     const context = canvas.getContext('2d');
 
+    this.#canvas = canvas;
     this.#context = context;
   }
 
@@ -31,11 +33,15 @@ class Canvas {
     this.#context.lineWidth = thickness;
     this.#context.shadowColor = shadow;
 
-    this.#context.shadowBlur = 40;
+    this.#context.shadowBlur = 60;
     this.#context.shadowOffsetX = 0;
     this.#context.shadowOffsetY = 0;
 
     this.#context.stroke();
+  }
+
+  clear() {
+    this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
   }
 }
 

@@ -1,7 +1,7 @@
 const THEMES = {
   RED: {
-    stroke: '#ff0000',
-    shadow: '#ff0000',
+    stroke: '#ffffff',
+    shadow: '#0000ff',
   },
 };
 

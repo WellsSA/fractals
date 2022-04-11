@@ -6,7 +6,7 @@ const getFinalCoordinates = (
   [initalX, initialY],
   length,
   angle,
-  [directionX, directionY] = [1, -1]
+  [directionX, directionY] = [1, 1]
 ) => {
   // finds the respective angle in degrees
   const degreeAngle = (Math.PI * angle) / 180;
